@@ -79,3 +79,7 @@ local.properties
 .pydevproject
 **/__pycache__/
 .idea/
+
+# Auxiliary inputs needed to run
+!auxiliary/isrf/*.nc
+!auxiliary/equalization/*.nc
