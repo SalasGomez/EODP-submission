@@ -29,13 +29,17 @@ def haversine(lat1, lon1, lat2, lon2):
 ecef = pyproj.Proj(proj='geocent', ellps='WGS84', datum='WGS84') # not sure if this is geodetic
 lla = pyproj.Proj(proj='latlong', ellps='WGS84', datum='WGS84')
 
+# Transformers (pyproj.transform is deprecated)
+ecef2lla = pyproj.Transformer.from_proj(ecef, lla, always_xy=True)
+lla2ecef = pyproj.Transformer.from_proj(lla, ecef, always_xy=True)
+
 def ecef2geo(pos):
     '''
     Conversion of ECEF to geodetic
     :param pos: 3x1 vector of ECEF in meters
     :return: Geodetic coordinates in degrees and meters
     '''
-    lon, lat, alt = pyproj.transform(ecef, lla, pos[0], pos[1], pos[2], radians=False)
+    lon, lat, alt = ecef2lla.transform(pos[0], pos[1], pos[2], radians=False)
     return lat, lon, alt # [deg]
 
 def geo2ecef(lat, lon, alt):
@@ -47,7 +51,7 @@ def geo2ecef(lat, lon, alt):
     :return:3x1 vector of ECEF in meters
     '''
     pos = np.zeros(3)
-    pos[0], pos[1], pos[2] = pyproj.transform(lla, ecef, lon, lat, alt, radians=False)
+    pos[0], pos[1], pos[2] = lla2ecef.transform(lon, lat, alt, radians=False)
     return pos # [m]
 
 
