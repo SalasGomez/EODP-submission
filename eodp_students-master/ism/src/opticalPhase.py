@@ -6,7 +6,7 @@ from numpy.fft import fftshift, ifft2, fft2
 import numpy as np
 from common.io.writeToa import writeToa
 from common.io.readIsrf import readIsrf
-from scipy.interpolate import interp1d, interp2d
+from scipy.interpolate import interp1d
 from common.plot.plotMat2D import plotMat2D
 from common.plot.plotF import plotF
 from scipy.signal import convolve2d
