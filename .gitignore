@@ -1,0 +1,25 @@
+# Python virtual environments
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor and Windows files
+.vscode/
+Thumbs.db
+Desktop.ini
+# Test data from the teacher (too large for GitHub)
+EODP-TS-E2E/
+EODP_TER_2021/
+Theoretical Context and instructions/
