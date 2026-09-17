@@ -1,5 +1,5 @@
 
-from config.l1cConfig import l1cConfig
+from config.loadConfig import loadConfig
 from common.src.baseModule import baseModule
 
 class initL1c(baseModule):
@@ -9,7 +9,7 @@ class initL1c(baseModule):
         super().__init__(auxdir, indir, outdir, "L1C")
 
         # Init Local config
-        self.l1cConfig = l1cConfig()
+        self.l1cConfig = loadConfig("l1cConfig")
 
         # Make sure the logger is enabled
         self.logger.disabled = False
