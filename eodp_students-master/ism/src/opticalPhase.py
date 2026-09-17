@@ -116,7 +116,20 @@ class opticalPhase(initIsm):
         :param band: band
         :return: TOA image 2D in radiances [mW/m2]
         """
-        # TODO
+        # Read the ISRF of the band (wavelengths in um)
+        isrf, wv_isrf = readIsrf(os.path.join(self.auxdir, self.ismConfig.isrffile), band)
+        wv_isrf = wv_isrf * 1e3 # [nm], same units as the SGM
+
+        # Normalise the ISRF with its integral
+        isrf_n = isrf / np.sum(isrf)
+
+        # Interpolate each pixel spectrum onto the ISRF wavelengths and integrate
+        toa = np.zeros((sgm_toa.shape[0], sgm_toa.shape[1]))
+        for ialt in range(sgm_toa.shape[0]):
+            for iact in range(sgm_toa.shape[1]):
+                cs = interp1d(sgm_wv, sgm_toa[ialt, iact, :], fill_value=(0, 0), bounds_error=False)
+                toa[ialt, iact] = np.sum(cs(wv_isrf) * isrf_n)
+
         return toa
 
 
