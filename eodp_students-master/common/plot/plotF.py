@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from common.plot.style import tex
 import numpy as np
 import os
 
@@ -17,9 +18,9 @@ def plotF(x, y, title_str, xlabel_str, ylabel_str, directory, saveas_str):
     elif y.size == 0:
         plt.plot(x, '-r')
 
-    plt.title(title_str, fontsize=20)
-    plt.xlabel(xlabel_str, fontsize=16)
-    plt.ylabel(ylabel_str, fontsize=16)
+    plt.title(tex(title_str), fontsize=20)
+    plt.xlabel(tex(xlabel_str), fontsize=16)
+    plt.ylabel(tex(ylabel_str), fontsize=16)
     plt.grid()
     savestr = directory + os.path.sep + saveas_str
     plt.savefig(savestr)
