@@ -120,7 +120,10 @@ class mtf:
         :param fr2D: 2D relative frequencies (f/fc), where fc is the optics cut-off frequency
         :return: diffraction MTF
         """
-        #TODO
+        # Circular aperture. Clip to avoid NaN in arccos, then zero above the cut-off
+        fr = np.minimum(fr2D, 1.0)
+        Hdiff = 2 / pi * (np.arccos(fr) - fr * np.sqrt(1 - fr * fr))
+        Hdiff[fr2D * fr2D > 1] = 0
         return Hdiff
 
 
