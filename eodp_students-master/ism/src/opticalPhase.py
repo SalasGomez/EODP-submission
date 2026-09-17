@@ -1,4 +1,5 @@
 
+import os
 from ism.src.initIsm import initIsm
 from math import pi
 from ism.src.mtf import mtf
@@ -92,7 +93,8 @@ class opticalPhase(initIsm):
         :param Tr: Optical transmittance [-]
         :return: TOA image in irradiances [mW/m2]
         """
-        # TODO
+        # I = Tr * L * pi/4 * (D/f)^2
+        toa = Tr * toa * (pi / 4) * (D / f) ** 2
         return toa
 
 
