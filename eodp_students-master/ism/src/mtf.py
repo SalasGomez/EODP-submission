@@ -90,7 +90,28 @@ class mtf:
         :return fnAct: 1D normalised frequencies 2D ACT (f/(1/w))
         :return fnAlt: 1D normalised frequencies 2D ALT (f/(1/w))
         """
-        #TODO
+        eps = 1e-10
+
+        # Frequency sampling [1/m]
+        fstepAlt = 1 / nlines / w
+        fstepAct = 1 / ncolumns / w
+
+        # 1D frequencies in [-1/(2w), 1/(2w))
+        fAlt = np.arange(-1 / (2 * w), 1 / (2 * w) - eps, fstepAlt)
+        fAct = np.arange(-1 / (2 * w), 1 / (2 * w) - eps, fstepAct)
+
+        # Optics cut-off frequency
+        eps_cutoff = D / (lambd * focal)
+
+        # Normalised frequencies (f/(1/w))
+        fnAlt = fAlt / (1 / w)
+        fnAct = fAct / (1 / w)
+
+        # 2D normalised and relative frequencies
+        [fnAltxx, fnActxx] = np.meshgrid(fnAlt, fnAct, indexing='ij')
+        fn2D = np.sqrt(fnAltxx * fnAltxx + fnActxx * fnActxx)
+        fr2D = fn2D * (1 / w) / eps_cutoff
+
         return fn2D, fr2D, fnAct, fnAlt
 
     def mtfDiffract(self,fr2D):
