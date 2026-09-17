@@ -1,5 +1,5 @@
 from math import pi
-from config.ismConfig import ismConfig
+from config.loadConfig import loadConfig
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -16,7 +16,7 @@ class mtf:
     for the system MTF
     """
     def __init__(self, logger, outdir):
-        self.ismConfig = ismConfig()
+        self.ismConfig = loadConfig("ismConfig")
         self.logger = logger
         self.outdir = outdir
 

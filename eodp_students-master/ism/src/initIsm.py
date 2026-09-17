@@ -1,4 +1,4 @@
-from config.ismConfig import ismConfig
+from config.loadConfig import loadConfig
 from common.src.baseModule import baseModule
 
 class initIsm(baseModule):
@@ -9,7 +9,7 @@ class initIsm(baseModule):
         super().__init__(auxdir, indir, outdir, "ISM")
 
         # Init Local config
-        self.ismConfig = ismConfig()
+        self.ismConfig = loadConfig("ismConfig")
 
         # Make sure the logger is enabled
         self.logger.disabled = False
