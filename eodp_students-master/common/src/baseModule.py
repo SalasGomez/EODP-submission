@@ -1,5 +1,5 @@
 import logging.config
-from config.globalConfig import globalConfig
+from config.loadConfig import loadConfig
 from auxiliary.constants import constants
 from common.io.fileExists import fileExists, addFileSep
 import os
@@ -43,7 +43,7 @@ class baseModule:
         self.modulestr = modulestr
 
         # Global Config
-        self.globalConfig = globalConfig()
+        self.globalConfig = loadConfig("globalConfig")
 
         # Init logger
         logstr = auxdir + os.path.sep + self.globalConfig.logconfigfile
