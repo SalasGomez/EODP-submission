@@ -176,7 +176,9 @@ class mtf:
         :param ksmear: Amplitude of low-frequency component for the motion smear MTF in ALT [pixels]
         :return: Smearing MTF
         """
-        #TODO
+        # 1D in ALT, repeated in the ACT direction
+        Hsmear1D = np.sinc(ksmear * fnAlt)
+        Hsmear = np.tile(Hsmear1D[:, np.newaxis], (1, ncolumns))
         return Hsmear
 
     def mtfMotion(self, fn2D, kmotion):
