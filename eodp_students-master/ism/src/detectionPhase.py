@@ -1,6 +1,7 @@
 
 from ism.src.initIsm import initIsm
 import numpy as np
+import os
 from common.io.writeToa import writeToa
 from common.plot.plotMat2D import plotMat2D
 from common.plot.plotF import plotF
@@ -139,7 +140,32 @@ class detectionPhase(initIsm):
         :param dead_pix_red: Reduction in the quantum efficiency for the dead pixels [-, over 1]
         :return: toa in e- including bad & dead pixels
         """
-        #TODO
+        toa_act = toa.shape[1]
+
+        # Number of affected pixels (floor)
+        n_bad = int(toa_act * bad_pix / 100)
+        n_dead = int(toa_act * dead_pix / 100)
+
+        # Evenly distributed in the CCD
+        idx_bad = []
+        idx_dead = []
+        if n_bad > 0:
+            idx_bad = list(range(5, toa_act, int(toa_act / n_bad)))
+        if n_dead > 0:
+            idx_dead = list(range(0, toa_act, int(toa_act / n_dead)))
+
+        # Reduce the signal
+        toa[:, idx_bad] = toa[:, idx_bad] * (1 - bad_pix_red)
+        toa[:, idx_dead] = toa[:, idx_dead] * (1 - dead_pix_red)
+
+        self.logger.debug("Bad pixels " + str(idx_bad))
+        self.logger.debug("Dead pixels " + str(idx_dead))
+
+        # Save the indexes for validation
+        with open(os.path.join(self.outdir, 'bad_dead_pixels.txt'), 'w') as fid:
+            fid.write('bad ' + ' '.join(str(i) for i in idx_bad) + '\n')
+            fid.write('dead ' + ' '.join(str(i) for i in idx_dead) + '\n')
+
         return toa
 
     def prnu(self, toa, kprnu):
