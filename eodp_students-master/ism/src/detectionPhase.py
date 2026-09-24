@@ -104,7 +104,13 @@ class detectionPhase(initIsm):
         :param wv: Central wavelength of the band [m]
         :return: Toa in photons
         """
-        #TODO
+        # Incident energy [J] (mW to W)
+        Ein = toa * 1e-3 * area_pix * tint
+
+        # Energy of one photon [J]
+        Ephot = self.constants.h_planck * self.constants.speed_light / wv
+
+        toa_ph = Ein / Ephot
         return toa_ph
 
     def phot2Electr(self, toa, QE):
