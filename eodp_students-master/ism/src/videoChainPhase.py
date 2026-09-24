@@ -55,7 +55,7 @@ class videoChainPhase(initIsm):
         :param gain_adc: Gain of the Analog-to-digital conversion [-]
         :return: output toa in [V]
         """
-        #TODO
+        toa = toa * OCF * gain_adc
         return toa
 
     def digitisation(self, toa, bit_depth, min_voltage, max_voltage):
