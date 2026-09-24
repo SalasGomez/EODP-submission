@@ -155,7 +155,7 @@ class mtf:
         :param wHF: RMS of high-frequency wavefront errors [m]
         :return: WFE Aberrations MTF
         """
-        #TODO
+        Hwfe = np.exp(-fr2D * (1 - fr2D) * (kLF * (wLF / lambd) ** 2 + kHF * (wHF / lambd) ** 2))
         return Hwfe
 
     def mtfDetector(self,fn2D):
