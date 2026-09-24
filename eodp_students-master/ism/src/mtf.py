@@ -215,6 +215,34 @@ class mtf:
         :param band: band
         :return: N/A
         """
-        #TODO
+        # Central indexes (frequency 0)
+        ialt = int(nlines / 2)
+        iact = int(ncolumns / 2)
+
+        labels = ['Diffraction', 'Defocus', 'WFE aberrations', 'Detector', 'Smearing', 'Motion blur', 'System']
+        mtfs = [Hdiff, Hdefoc, Hwfe, Hdet, Hsmear, Hmotion, Hsys]
+        styles = ['-b', '--g', '-c', '-m', '-.', ':k', '-r']
+
+        # Cuts from 0 to Nyquist (0.5)
+        cuts = {'Act': (fnAct[iact:], [H[ialt, iact:] for H in mtfs]),
+                'Alt': (fnAlt[ialt:], [H[ialt:, iact] for H in mtfs])}
+
+        for cut, (fn, Hs) in cuts.items():
+            fig = plt.figure(figsize=(10, 7))
+            for H, lab, sty in zip(Hs, labels, styles):
+                plt.plot(fn, H, sty, linewidth=2 if lab == 'System' else 1, label=lab)
+            plt.axvline(0.5, color='k', linestyle='--', label='Nyquist')
+            plt.xlim(0, 0.52)
+            plt.ylim(0, 1.05)
+            plt.title('System MTF, cut ' + cut.upper() + ', ' + band)
+            plt.xlabel(r'Spatial frequencies $f/(1/w)$ [-]')
+            plt.ylabel('MTF [-]')
+            plt.legend(loc='lower left', fontsize=10)
+            plt.grid(True)
+            plt.savefig(os.path.join(directory, 'system_mtf_cut' + cut + '_' + band + '.png'))
+            plt.close(fig)
+
+        # 2D system MTF
+        plotMat2D(Hsys, 'System MTF ' + band, 'ACT', 'ALT', directory, 'system_mtf_2d_' + band)
 
 
