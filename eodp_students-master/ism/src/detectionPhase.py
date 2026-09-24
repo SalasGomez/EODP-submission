@@ -149,7 +149,9 @@ class detectionPhase(initIsm):
         :param kprnu: multiplicative factor to the standard normal deviation for the PRNU
         :return: TOA after adding PRNU [e-]
         """
-        #TODO
+        # One value per ACT pixel, time invariant
+        prnu = np.random.normal(0.0, 1.0, toa.shape[1]) * kprnu
+        toa = toa * (1 + prnu)
         return toa
 
 
