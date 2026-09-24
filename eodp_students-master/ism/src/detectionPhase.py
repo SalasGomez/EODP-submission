@@ -120,7 +120,13 @@ class detectionPhase(initIsm):
         :param QE: Quantum efficiency [e-/ph]
         :return: toa in electrons
         """
-        #TODO
+        toae = toa * QE
+
+        # Saturate to the Full Well Capacity
+        nsat = np.sum(toae > self.ismConfig.FWC)
+        if nsat > 0:
+            self.logger.warning("Pixels above the FWC: " + str(nsat))
+        toae = np.minimum(toae, self.ismConfig.FWC)
         return toae
 
     def badDeadPixels(self, toa,bad_pix,dead_pix,bad_pix_red,dead_pix_red):
