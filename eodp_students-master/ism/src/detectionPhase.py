@@ -166,5 +166,13 @@ class detectionPhase(initIsm):
         :param ds_B_coeff: Empirical parameter of the model 6040 K
         :return: TOA in [e-] with dark signal
         """
-        #TODO
+        # DSNU per ACT pixel (positive)
+        dsnu = np.abs(np.random.normal(0.0, 1.0, toa.shape[1])) * kdsnu
+
+        # Constant component, temperature dependent
+        Sd = ds_A_coeff * (T / Tref) ** 3 * np.exp(-ds_B_coeff * (1 / T - 1 / Tref))
+
+        # Total dark signal, added to every line
+        DS = Sd * (1 + dsnu)
+        toa = toa + DS
         return toa
