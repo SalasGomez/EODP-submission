@@ -4,7 +4,7 @@
 import os
 import sys
 import shutil
-import logging
+from datetime import datetime
 import numpy as np
 from netCDF4 import Dataset
 
@@ -46,20 +46,42 @@ def testDirs(testname, clean=True):
     return dirs
 
 
+class HarnessLog:
+    '''
+    Logger of the test script (file + console).
+    Independent of the logging module, which the EODP modules reconfigure.
+    '''
+    def __init__(self, logfile, name):
+        self.logfile = logfile
+        self.name = name
+        open(self.logfile, 'w').close()
+
+    def write(self, level, msg):
+        line = '%s - %s - %-8s - %s' % (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), self.name, level, msg)
+        print(line)
+        with open(self.logfile, 'a') as fid:
+            fid.write(line + '\n')
+
+    def info(self, msg):
+        self.write('INFO', msg)
+
+    def warning(self, msg):
+        self.write('WARNING', msg)
+
+
 def harnessLogger(dirs, testname):
     '''
-    Logger of the test script (file + console)
+    Logger of the test script, saved in the log folder
     '''
-    logger = logging.getLogger('harness.' + testname)
-    logger.setLevel(logging.INFO)
-    logger.propagate = False
-    logger.handlers = []
-    fmt = logging.Formatter('%(asctime)s - %(name)s - %(levelname)-8s - %(message)s')
-    for h in [logging.FileHandler(os.path.join(dirs['log'], testname + '.log'), mode='w'),
-              logging.StreamHandler(sys.stdout)]:
-        h.setFormatter(fmt)
-        logger.addHandler(h)
-    return logger
+    return HarnessLog(os.path.join(dirs['log'], testname + '.log'), 'harness.' + testname)
+
+
+def moduleDone(logger, dirs, outdir, module):
+    '''
+    After a module run. Copies the module log.
+    '''
+    copyModuleLog(dirs, outdir, module)
+    logger.info(module + ' finished. Outputs in ' + outdir)
 
 
 def copyModuleLog(dirs, outdir, module):
