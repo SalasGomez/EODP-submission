@@ -26,6 +26,7 @@ def setStyle():
         plt.rcParams['font.serif'] = ['cmr10']
         plt.rcParams['mathtext.fontset'] = 'cm'
         plt.rcParams['axes.formatter.use_mathtext'] = True
+    plt.rcParams['axes.formatter.useoffset'] = False
     plt.rcParams['savefig.bbox'] = 'tight'
     plt.rcParams['figure.facecolor'] = 'white'
 
