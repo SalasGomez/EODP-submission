@@ -62,7 +62,8 @@ class l1b(initL1b):
         :param eq_mult: Gain factor, adimensional
         :return: TOA in DN, equalized
         """
-        #TODO
+        # Factors are per ACT pixel, applied to every line
+        toa = (toa - eq_add) / eq_mult
         return toa
 
     def restoration(self,toa,gain):
