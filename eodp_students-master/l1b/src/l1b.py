@@ -8,6 +8,8 @@ from common.io.readFactor import readFactor, EQ_MULT, EQ_ADD, NC_EXT
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+from common.plot.plotMat2D import plotMat2D
+from common.plot.plotF import plotF
 
 class l1b(initL1b):
 
@@ -79,5 +81,12 @@ class l1b(initL1b):
         return toa
 
     def plotL1bToa(self, toa_l1b, outputdir, band):
-        #TODO
-        a=1 # dummy
+        """
+        Plots the L1B TOA (2D) and its central ALT line
+        """
+        saveas_str = self.globalConfig.l1b_toa + band
+        plotMat2D(toa_l1b, 'L1B TOA ' + band + ' [mW/m2/sr]', 'ACT', 'ALT', outputdir, saveas_str)
+
+        idalt = int(toa_l1b.shape[0] / 2)
+        plotF([], toa_l1b[idalt, :], 'L1B TOA ' + band + ', ALT line ' + str(idalt),
+              'ACT pixel [-]', 'TOA [mW/m2/sr]', outputdir, saveas_str + '_alt' + str(idalt))
