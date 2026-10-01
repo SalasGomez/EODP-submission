@@ -62,7 +62,10 @@ class l1c(initL1c):
         :param band: band
         :return: L1C radiances, L1C latitude and longitude in degrees
         '''
-        #TODO
+        # 2D interpolant of the L1B radiances vs the geodetic coordinates
+        self.logger.info("Computing the L1B interpolant")
+        tck = bisplrep(lat.flatten(), lon.flatten(), toa.flatten())
+
         return lat_l1c, lon_l1c, toa_l1c
 
     def checkSize(self, lat,toa):
