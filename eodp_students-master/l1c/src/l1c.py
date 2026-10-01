@@ -66,6 +66,24 @@ class l1c(initL1c):
         self.logger.info("Computing the L1B interpolant")
         tck = bisplrep(lat.flatten(), lon.flatten(), toa.flatten())
 
+        # Unique MGRS tiles covering the L1B grid
+        m = mgrs.MGRS()
+        mgrs_tiles = set([])
+        for ialt in range(lat.shape[0]):
+            for iact in range(lat.shape[1]):
+                mgrs_tiles.add(str(m.toMGRS(lat[ialt, iact], lon[ialt, iact],
+                                            MGRSPrecision=self.l1cConfig.mgrs_tile_precision)))
+        mgrs_tiles = list(mgrs_tiles)
+        self.logger.info("Number of MGRS tiles " + str(len(mgrs_tiles)))
+
+        # Coordinates of each tile and interpolated radiance
+        lat_l1c = np.zeros(len(mgrs_tiles))
+        lon_l1c = np.zeros(len(mgrs_tiles))
+        toa_l1c = np.zeros(len(mgrs_tiles))
+        for itile in range(len(mgrs_tiles)):
+            lat_l1c[itile], lon_l1c[itile] = m.toLatLon(mgrs_tiles[itile], inDegrees=True)
+            toa_l1c[itile] = bisplev(lat_l1c[itile], lon_l1c[itile], tck)
+
         return lat_l1c, lon_l1c, toa_l1c
 
     def checkSize(self, lat,toa):
