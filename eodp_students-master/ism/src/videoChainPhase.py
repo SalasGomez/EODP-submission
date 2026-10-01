@@ -67,6 +67,13 @@ class videoChainPhase(initIsm):
         :param max_voltage: maximum voltage
         :return: toa in digital counts
         """
-        #TODO
+        dn_max = 2 ** bit_depth - 1
+        toa_dn = np.round(toa / (max_voltage - min_voltage) * dn_max)
+
+        # Saturation
+        nsat = np.sum(toa_dn > dn_max)
+        if nsat > 0:
+            self.logger.warning("Saturated pixels: " + str(nsat))
+        toa_dn = np.clip(toa_dn, 0, dn_max)
         return toa_dn
 
