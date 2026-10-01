@@ -23,3 +23,19 @@ Desktop.ini
 EODP-TS-E2E/
 EODP_TER_2021/
 Theoretical Context and instructions/
+
+# Harness outputs (delivered in the datapack)
+harness/**/output/
+
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.lof
+report/*.lot
+report/*.bbl
+report/*.blg
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
