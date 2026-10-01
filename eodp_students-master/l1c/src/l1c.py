@@ -73,4 +73,7 @@ class l1c(initL1c):
         :param toa: Radiance 2D matrix
         :return: NA
         '''
-        #TODO
+        if lat.shape != toa.shape:
+            self.logger.error("Size of the geodetic coordinates " + str(lat.shape) +
+                              " does not match the TOA " + str(toa.shape))
+            raise Exception("Size mismatch between the L1B TOA and the geolocation")
