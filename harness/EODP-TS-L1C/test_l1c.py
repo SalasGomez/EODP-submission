@@ -56,9 +56,65 @@ def crossValidation(dirs, logger):
     logger.info('L1C cross-validation ' + ('PASSED' if all(r[5] for r in rows) else 'FAILED'))
 
 
+def plotGrids(dirs, logger):
+    '''
+    L1B and L1C grids in the same plot, full scene and zoom on a corner
+    '''
+    lat, lon = readGeodetic(GMDIR, 'geolocation.nc')
+    t1, la1, lo1 = readL1c(dirs['output'], 'l1c_toa_VNIR-0.nc')
+    fig, axs = plt.subplots(1, 2, figsize=(15, 7))
+    for ax in axs:
+        ax.plot(lon.flatten(), lat.flatten(), '.b', markersize=3, label='L1B grid')
+        ax.plot(lo1, la1, '.r', markersize=3, label='L1C grid (MGRS 100 m)')
+        ax.set_xlabel('Longitude [deg]')
+        ax.set_ylabel('Latitude [deg]')
+        ax.grid(True)
+    axs[0].set_title('L1B and L1C grids')
+    axs[0].legend(loc='upper right', numpoints=1, markerscale=4, fontsize=11)
+    # Zoom on the corner of the last line and first column
+    axs[1].set_xlim(lon[-1, 0] - 0.002, lon[-1, 0] + 0.008)
+    axs[1].set_ylim(lat[-1, 0] - 0.003, lat[-1, 0] + 0.007)
+    axs[1].set_title('Zoom on the west corner')
+    saveFig(fig, dirs, 'l1c_grids')
+    logger.info('L1B points %d, L1C points %d' % (lat.size, la1.size))
+
+
+def gsd(dirs, logger):
+    '''
+    L1B ground sampling distance ACT (central line) and ALT (central column)
+    with the Haversine distance between consecutive pixels
+    '''
+    lat, lon = readGeodetic(GMDIR, 'geolocation.nc')
+    ialt, iact = int(lat.shape[0] / 2), int(lat.shape[1] / 2)
+    gsd_act = np.array([haversine(lat[ialt, i], lon[ialt, i], lat[ialt, i + 1], lon[ialt, i + 1])
+                        for i in range(lat.shape[1] - 1)])
+    gsd_alt = np.array([haversine(lat[i, iact], lon[i, iact], lat[i + 1, iact], lon[i + 1, iact])
+                        for i in range(lat.shape[0] - 1)])
+
+    fig = plt.figure(figsize=(10, 6))
+    plt.plot(gsd_act, '-b', label='ACT, central line %d' % ialt)
+    plt.plot(gsd_alt, '-r', label='ALT, central column %d' % iact)
+    plt.title('L1B ground sampling distance')
+    plt.xlabel('Pixel index [-]')
+    plt.ylabel('Distance between consecutive pixels [m]')
+    plt.legend(loc='best', fontsize=11)
+    plt.grid(True)
+    saveFig(fig, dirs, 'l1c_gsd')
+
+    with open(os.path.join(REPORT, 'tables', 'l1c_gsd.tex'), 'w') as fid:
+        fid.write('\\begin{tabular}{lccc}\n\\toprule\n')
+        fid.write('Direction & Mean [m] & Min. [m] & Max. [m] \\\\\n\\midrule\n')
+        for lab, g in [('ACT', gsd_act), ('ALT', gsd_alt)]:
+            fid.write('%s & %.2f & %.2f & %.2f \\\\\n' % (lab, np.mean(g), np.min(g), np.max(g)))
+            logger.info('GSD %s mean %.3f m, min %.3f m, max %.3f m' % (lab, np.mean(g), np.min(g), np.max(g)))
+        fid.write('\\bottomrule\n\\end{tabular}\n')
+
+
 if __name__ == '__main__':
     dirs = testDirs(TEST)
     logger = harnessLogger(dirs, TEST)
     conf = runL1c(dirs, logger)
     crossValidation(dirs, logger)
+    plotGrids(dirs, logger)
+    gsd(dirs, logger)
     logger.info('End of ' + TEST)
