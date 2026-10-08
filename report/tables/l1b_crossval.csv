@@ -1,0 +1,9 @@
+file,band,max_rel_diff_percent,pass
+l1b_toa_eq_,VNIR-0,0.000000e+00,True
+l1b_toa_eq_,VNIR-1,0.000000e+00,True
+l1b_toa_eq_,VNIR-2,0.000000e+00,True
+l1b_toa_eq_,VNIR-3,0.000000e+00,True
+l1b_toa_,VNIR-0,0.000000e+00,True
+l1b_toa_,VNIR-1,0.000000e+00,True
+l1b_toa_,VNIR-2,0.000000e+00,True
+l1b_toa_,VNIR-3,0.000000e+00,True
