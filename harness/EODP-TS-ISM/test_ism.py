@@ -106,6 +106,99 @@ def mtfNyquistTable(nyq, logger):
                         (band, cut, MTF_LABELS[imin], vals[imin], vals[-1]))
 
 
+STEPS = [r'Radiance $\rightarrow$ irradiance', r'Irradiance $\rightarrow$ photons', r'Photons $\rightarrow$ electrons',
+         r'Electrons $\rightarrow$ volts', r'Volts $\rightarrow$ DN']
+STEP_UNITS = [r'[sr]', r'[ph m$^2$/mW]', r'[e$^-$/ph]', r'[V/e$^-$]', r'[DN/V]']
+
+
+def conversionFactors(conf, band):
+    '''
+    Scalar factor of each unit conversion step for a band
+    '''
+    h = 6.62607004e-34 # [J s] same as auxiliary/constants.py
+    c = 299792458      # [m/s]
+    wv = conf.wv[int(band[-1])]
+    f_irr = conf.Tr * np.pi / 4 * (conf.D / conf.f) ** 2
+    f_ph = 1e-3 * conf.pix_size ** 2 * conf.t_int * wv / (h * c)
+    f_e = conf.QE
+    f_v = conf.OCF * conf.ADC_gain
+    f_dn = (2 ** conf.bit_depth - 1) / (conf.max_voltage - conf.min_voltage)
+    return [f_irr, f_ph, f_e, f_v, f_dn]
+
+
+def unitConversion(dirs, conf, logger):
+    '''
+    Analytic unit conversion at the central pixel of ism_toa_isrf,
+    compared with the saved electrons (ism_toa_e) and DN (ism_toa)
+    '''
+    rows = []
+    for band in BANDS:
+        isrf = readVar(os.path.join(dirs['output'], 'ism_toa_isrf_' + band + '.nc'))
+        ialt, iact = int(isrf.shape[0] / 2), int(isrf.shape[1] / 2)
+        L = float(isrf[ialt, iact])
+        f = conversionFactors(conf, band)
+
+        # Analytic chain from the radiance
+        e_an = L * f[0] * f[1] * f[2]
+        dn_an = np.round(e_an * f[3] * f[4])
+
+        # Saved outputs at the same pixel
+        e_sv = float(readVar(os.path.join(dirs['output'], 'ism_toa_e_' + band + '.nc'))[ialt, iact])
+        dn_sv = float(readVar(os.path.join(dirs['output'], 'ism_toa_' + band + '.nc'))[ialt, iact])
+
+        # Same chain starting after the MTF and after the detection effects
+        opt = float(readVar(os.path.join(dirs['output'], 'ism_toa_optical_' + band + '.nc'))[ialt, iact])
+        det = float(readVar(os.path.join(dirs['output'], 'ism_toa_detection_' + band + '.nc'))[ialt, iact])
+        e_opt = opt * f[1] * f[2]
+        dn_det = min(np.round(det * f[3] * f[4]), 2 ** conf.bit_depth - 1)
+
+        rows.append(dict(band=band, L=L, f=f, e_an=e_an, e_sv=e_sv, e_opt=e_opt,
+                         dn_an=dn_an, dn_sv=dn_sv, dn_det=dn_det, opt=opt, det=det))
+        logger.info('%s pixel [%d,%d] L=%.4f e: analytic %.2f saved %.2f (from optical %.2f). '
+                    'DN: analytic %.0f saved %.0f (from detection %.0f)' %
+                    (band, ialt, iact, L, e_an, e_sv, e_opt, dn_an, dn_sv, dn_det))
+    writeUnitTables(rows)
+    return rows
+
+
+def writeUnitTables(rows):
+    '''
+    LaTeX tables of the factors and the comparison with the outputs
+    '''
+    # Factors, the two largest per band in bold
+    with open(os.path.join(REPORT, 'tables', 'ism_units_factors.tex'), 'w') as fid:
+        fid.write('\\begin{tabular}{ll' + 'c' * len(BANDS) + '}\n\\toprule\n')
+        fid.write('Step & Units & ' + ' & '.join(BANDS) + ' \\\\\n\\midrule\n')
+        for i in range(len(STEPS)):
+            vals = []
+            for r in rows:
+                top2 = np.argsort(r['f'])[-2:]
+                s = fmtSci(r['f'][i])
+                vals.append('$\\mathbf{' + s[1:-1] + '}$' if i in top2 else s)
+            fid.write(STEPS[i] + ' & ' + STEP_UNITS[i] + ' & ' + ' & '.join(vals) + ' \\\\\n')
+        fid.write('\\bottomrule\n\\end{tabular}\n')
+
+    # Analytic values vs saved outputs
+    with open(os.path.join(REPORT, 'tables', 'ism_units_check.tex'), 'w') as fid:
+        fid.write('\\begin{tabular}{l' + 'c' * len(BANDS) + '}\n\\toprule\n')
+        fid.write('Quantity & ' + ' & '.join(BANDS) + ' \\\\\n\\midrule\n')
+        lines = [('Radiance $L$ [mW/m$^2$/sr]', 'L', '%.4f'),
+                 ('Electrons, analytic from $L$ [e$^-$]', 'e_an', '%.1f'),
+                 ('Electrons, \\texttt{ism\\_toa\\_e} [e$^-$]', 'e_sv', '%.1f'),
+                 ('Electrons, analytic from optical TOA [e$^-$]', 'e_opt', '%.1f'),
+                 ('DN, analytic from $L$ [DN]', 'dn_an', '%.0f'),
+                 ('DN, \\texttt{ism\\_toa} [DN]', 'dn_sv', '%.0f'),
+                 ('DN, analytic from detection TOA, saturated [DN]', 'dn_det', '%.0f')]
+        for lab, key, fmt in lines:
+            fid.write(lab + ' & ' + ' & '.join(fmt % r[key] for r in rows) + ' \\\\\n')
+        fid.write('\\midrule\n')
+        fid.write('Rel. diff. electrons [\\%] & ' +
+                  ' & '.join('%.3f' % (100 * (r['e_sv'] - r['e_an']) / r['e_an']) for r in rows) + ' \\\\\n')
+        fid.write('Rel. diff. DN [\\%] & ' +
+                  ' & '.join('%.3f' % (100 * (r['dn_sv'] - r['dn_an']) / r['dn_an']) for r in rows) + ' \\\\\n')
+        fid.write('\\bottomrule\n\\end{tabular}\n')
+
+
 if __name__ == '__main__':
     dirs = testDirs(TEST)
     logger = harnessLogger(dirs, TEST)
@@ -113,4 +206,5 @@ if __name__ == '__main__':
     crossValidation(dirs, logger)
     nyq = plotMtfs(dirs, conf, logger)
     mtfNyquistTable(nyq, logger)
+    unitConversion(dirs, conf, logger)
     logger.info('End of ' + TEST)
