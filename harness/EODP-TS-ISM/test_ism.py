@@ -199,6 +199,29 @@ def writeUnitTables(rows):
         fid.write('\\bottomrule\n\\end{tabular}\n')
 
 
+def plotStages(dirs, logger):
+    '''
+    Central ALT line after each ISM stage, all bands
+    '''
+    stages = [('ism_toa_isrf_', r'Radiance [mW/m$^2$/sr]', 'After ISRF'),
+              ('ism_toa_optical_', r'Irradiance [mW/m$^2$]', 'After optical stage'),
+              ('ism_toa_detection_', r'Signal [e$^-$]', 'After detection stage'),
+              ('ism_toa_', 'Signal [DN]', 'After video chain')]
+    colors = ['b', 'g', 'r', 'k']
+    fig, axs = plt.subplots(2, 2, figsize=(14, 10))
+    for ax, (prefix, ylab, title) in zip(axs.flatten(), stages):
+        for band, col in zip(BANDS, colors):
+            toa = readVar(os.path.join(dirs['output'], prefix + band + '.nc'))
+            ax.plot(toa[int(toa.shape[0] / 2), :], color=col, label=band)
+        ax.set_title(title)
+        ax.set_xlabel('ACT pixel [-]')
+        ax.set_ylabel(ylab)
+        ax.grid(True)
+    axs[0, 0].legend(loc='upper left', fontsize=11)
+    saveFig(fig, dirs, 'ism_stages')
+    logger.info('Stage figure saved')
+
+
 if __name__ == '__main__':
     dirs = testDirs(TEST)
     logger = harnessLogger(dirs, TEST)
@@ -207,4 +230,5 @@ if __name__ == '__main__':
     nyq = plotMtfs(dirs, conf, logger)
     mtfNyquistTable(nyq, logger)
     unitConversion(dirs, conf, logger)
+    plotStages(dirs, logger)
     logger.info('End of ' + TEST)
