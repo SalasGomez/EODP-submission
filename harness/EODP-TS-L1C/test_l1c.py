@@ -79,6 +79,27 @@ def plotGrids(dirs, logger):
     logger.info('L1B points %d, L1C points %d' % (lat.size, la1.size))
 
 
+def plotToaMaps(dirs, logger):
+    '''
+    L1B and L1C radiances on the map, per band
+    '''
+    lat, lon = readGeodetic(GMDIR, 'geolocation.nc')
+    for band in BANDS:
+        toa_l1b = readVar(os.path.join(L1BDIR, 'l1b_toa_' + band + '.nc'))
+        t1, la1, lo1 = readL1c(dirs['output'], 'l1c_toa_' + band + '.nc')
+        vmin, vmax = np.min(toa_l1b), np.max(toa_l1b)
+        fig, axs = plt.subplots(1, 2, figsize=(15, 6.5))
+        for ax, (x, y, c, t, s) in zip(axs, [(lon.flatten(), lat.flatten(), toa_l1b.flatten(), 'L1B TOA ', 3),
+                                              (lo1, la1, t1, 'L1C TOA ', 10)]):
+            sc = ax.scatter(x, y, c=c, s=s, cmap='jet', vmin=vmin, vmax=vmax, edgecolors='none')
+            ax.set_title(t + band)
+            ax.set_xlabel('Longitude [deg]')
+            ax.set_ylabel('Latitude [deg]')
+            fig.colorbar(sc, ax=ax, label=r'TOA [mW/m$^2$/sr]')
+        saveFig(fig, dirs, 'l1c_toa_map_' + band)
+        logger.info('%s L1C points with negative radiance: %d' % (band, np.sum(t1 < 0)))
+
+
 def gsd(dirs, logger):
     '''
     L1B ground sampling distance ACT (central line) and ALT (central column)
@@ -116,5 +137,6 @@ if __name__ == '__main__':
     conf = runL1c(dirs, logger)
     crossValidation(dirs, logger)
     plotGrids(dirs, logger)
+    plotToaMaps(dirs, logger)
     gsd(dirs, logger)
     logger.info('End of ' + TEST)
