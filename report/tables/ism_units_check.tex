@@ -1,0 +1,16 @@
+\begin{tabular}{lcccc}
+\toprule
+Quantity & VNIR-0 & VNIR-1 & VNIR-2 & VNIR-3 \\
+\midrule
+Radiance $L$ [mW/m$^2$/sr] & 69.8533 & 200.3996 & 347.5041 & 408.5177 \\
+Electrons, analytic from $L$ [e$^-$] & 52676.1 & 205092.4 & 462601.4 & 594119.3 \\
+Electrons, \texttt{ism\_toa\_e} [e$^-$] & 52673.4 & 205082.8 & 420000.0 & 420000.0 \\
+Electrons, analytic from optical TOA [e$^-$] & 52673.4 & 205082.8 & 462581.2 & 594093.7 \\
+DN, analytic from $L$ [DN] & 758 & 2953 & 6661 & 8555 \\
+DN, \texttt{ism\_toa} [DN] & 804 & 2985 & 4095 & 4095 \\
+DN, analytic from detection TOA, saturated [DN] & 804 & 2985 & 4095 & 4095 \\
+\midrule
+Rel. diff. electrons [\%] & -0.005 & -0.005 & -9.209 & -29.307 \\
+Rel. diff. DN [\%] & 6.069 & 1.084 & -38.523 & -52.133 \\
+\bottomrule
+\end{tabular}
