@@ -37,10 +37,54 @@ def crossValidation(dirs, eqdir, logger):
     return ok
 
 
+def calibrationPlot(dirs, eqdir, noeqdir, logger):
+    '''
+    Central line: ISRF TOA (truth) vs L1B without and with equalization.
+    Also the relative error with respect to the truth and the saturation.
+    '''
+    rows = []
+    fig, axs = plt.subplots(2, 2, figsize=(14, 10))
+    for ax, band in zip(axs.flatten(), BANDS):
+        truth = readVar(os.path.join(INDIR, 'ism_toa_isrf_' + band + '.nc'))
+        noeq = readVar(os.path.join(noeqdir, 'l1b_toa_' + band + '.nc'))
+        eq = readVar(os.path.join(eqdir, 'l1b_toa_' + band + '.nc'))
+        dn = readVar(os.path.join(INDIR, 'ism_toa_' + band + '.nc'))
+        ialt = int(truth.shape[0] / 2)
+
+        ax.plot(truth[ialt, :], '-k', linewidth=2, label='TOA after ISRF (truth)')
+        ax.plot(noeq[ialt, :], '-r', label='L1B without equalization')
+        ax.plot(eq[ialt, :], '-b', label='L1B with equalization')
+        ax.set_title('Central ALT line ' + str(ialt) + ', ' + band)
+        ax.set_xlabel('ACT pixel [-]')
+        ax.set_ylabel(r'TOA [mW/m$^2$/sr]')
+        ax.grid(True)
+
+        # Errors on the non saturated pixels, without the MTF edge columns
+        ok = dn < 4095
+        ok[:, :2] = False
+        ok[:, -2:] = False
+        err_noeq = np.mean(np.abs(noeq[ok] - truth[ok]) / truth[ok]) * 100
+        err_eq = np.mean(np.abs(eq[ok] - truth[ok]) / truth[ok]) * 100
+        sat = np.mean(dn >= 4095) * 100
+        rows.append((band, err_noeq, err_eq, sat))
+        logger.info('%s mean rel error vs truth: no eq %.3f %%, eq %.3f %%. Saturated pixels %.1f %%' %
+                    (band, err_noeq, err_eq, sat))
+    axs[0, 0].legend(loc='upper left', fontsize=11)
+    saveFig(fig, dirs, 'l1b_calibration')
+
+    with open(os.path.join(REPORT, 'tables', 'l1b_errors.tex'), 'w') as fid:
+        fid.write('\\begin{tabular}{lccc}\n\\toprule\n')
+        fid.write('Band & Error without eq. [\\%] & Error with eq. [\\%] & Saturated pixels [\\%] \\\\\n\\midrule\n')
+        for r in rows:
+            fid.write('%s & %.3f & %.3f & %.1f \\\\\n' % r)
+        fid.write('\\bottomrule\n\\end{tabular}\n')
+
+
 if __name__ == '__main__':
     dirs = testDirs(TEST)
     logger = harnessLogger(dirs, TEST)
     noeqdir = runL1b(dirs, logger, False)
     eqdir = runL1b(dirs, logger, True)
     crossValidation(dirs, eqdir, logger)
+    calibrationPlot(dirs, eqdir, noeqdir, logger)
     logger.info('End of ' + TEST)
