@@ -1,0 +1,53 @@
+\section{Test harness}
+\label{sec:harness}
+
+\subsection{Structure}
+The harness has one folder per test inside \texttt{harness/}.
+Each folder contains the four items required by the guide \cite{guide}.
+
+\begin{itemize}
+\item \texttt{test\_*.py}. The script that launches the test and generates the figures and tables.
+\item \texttt{log/}. The log of the test script and the logs of the EODP modules of the final execution.
+\item \texttt{output/}. All the outputs generated in the execution.
+\item \texttt{figures/}. All the figures of the test. They are the same figures included in this report.
+\end{itemize}
+
+The folder \texttt{harness/common/} has the shared functions.
+They handle the paths, the logs, the figures and the cross-validation.
+The cross-validation tables of this report are written by the scripts. They are not typed by hand.
+
+\begin{lstlisting}
+harness/
+  common/            harness_utils.py, environment.py
+  EODP-TS-ISM/       test_ism.py, log/, output/, figures/
+  EODP-TS-L1B/       test_l1b.py, log/, output/, figures/
+  EODP-TS-L1C/       test_l1c.py, log/, output/, figures/
+  EODP-TS-E2E/       test_e2e.py, log/, output/, figures/
+\end{lstlisting}
+
+\subsection{Execution}
+The scripts run from the root of the repository with the Python environment of Table~\ref{tab:environment}.
+The input data of the teacher is placed in \texttt{EODP\_TER\_2021/} and \texttt{EODP-TS-E2E/}.
+
+\begin{lstlisting}
+python harness/EODP-TS-ISM/test_ism.py
+python harness/EODP-TS-L1B/test_l1b.py
+python harness/EODP-TS-L1C/test_l1c.py
+python harness/EODP-TS-E2E/test_e2e.py
+\end{lstlisting}
+
+The own outputs are written in the harness folders.
+The reference outputs are never overwritten.
+
+\subsection{Changes to the provided code}
+The skeleton of the simulator was completed with the algorithms of the ATBD \cite{atbd}.
+Some changes were needed to run it in the test environment.
+
+\begin{itemize}
+\item The main scripts use paths relative to the repository.
+\item The log file path uses forward slashes. The logging configuration evaluates the path as a string and the Windows backslashes broke it.
+\item The configuration files are loaded with a small loader. If the variable \texttt{EODP\_CONFIG\_DIR} is set, the configuration is read from that folder. The E2E test uses it to load the E2E configuration.
+\item The unused \texttt{interp2d} imports were removed. The function no longer exists in recent SciPy versions.
+\item The \texttt{mgrs} library is fixed to version 1.5.0. Later versions return the centre of the MGRS tile instead of its south-west corner. The reference outputs use the corner.
+\item All the figures use the \texttt{classic} Matplotlib style and \LaTeX{} fonts.
+\end{itemize}
