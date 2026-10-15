@@ -1,0 +1,60 @@
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Purpose}
+This document reports the unitary tests of the EODP simulator.
+The simulator models a passive optical multi-band imager with four VNIR bands.
+It has three modules.
+The Instrument Module (ISM) converts the input scene into digital numbers.
+The Level-1B module (L1B) converts the digital numbers back into radiances.
+The Level-1C module (L1C) projects the L1B radiances onto the MGRS grid.
+
+Each test has its own section with the objective, the inputs, the execution, the results, the answer to the theoretical question and the conclusion.
+The algorithms follow the ATBD \cite{atbd}.
+The deliverables follow the guide to the subject \cite{guide}.
+
+\subsection{Tests}
+Table~\ref{tab:tests} lists the tests.
+
+\begin{table}[H]
+\centering
+\caption{List of tests.}
+\label{tab:tests}
+\begin{tabular}{lll}
+\toprule
+Test & Module & Section \\
+\midrule
+EODP-TS-ISM & Instrument Module & \ref{sec:ism} \\
+EODP-TS-L1B & Level-1B processing & \ref{sec:l1b} \\
+EODP-TS-L1C & Level-1C processing & \ref{sec:l1c} \\
+EODP-TS-E2E & End-to-end chain ISM, L1B and L1C & \ref{sec:e2e} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pass criterion}
+The outputs of the ISM, L1B and L1C tests are compared with the reference outputs of the teacher.
+A test passes when the maximum relative difference of every output is lower than $10^{-3}\,\%$ \cite{guide}.
+The relative difference of each file is
+\begin{equation}
+\varepsilon = \max_{i,j} \frac{\left| x_{ij} - x^{\mathrm{ref}}_{ij} \right|}{\left| x^{\mathrm{ref}}_{ij} \right|} \cdot 100 \; [\%].
+\end{equation}
+Pixels where the reference is zero are compared with the absolute difference.
+The E2E test has no reference output. It is checked with the radiometric consistency of the chain.
+
+\subsection{Test environment}
+Table~\ref{tab:environment} shows the environment used to produce the results.
+The source code is available in GitHub \cite{repo}.
+
+\begin{table}[H]
+\centering
+\caption{Test environment.}
+\label{tab:environment}
+\input{tables/environment}
+\end{table}
+
+\subsection{References}
+\begin{itemize}
+\item \cite{atbd} EODP Algorithm Theoretical Baseline Document, revision 1.4.
+\item \cite{guide} Guide to the Subject, revision 3.0.
+\end{itemize}
