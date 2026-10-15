@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+
+\graphicspath{{figures/}}
+\hypersetup{pdftitle={EODP Unitary Test Reports}, pdfauthor={\studentname}}
+\lstset{basicstyle=\ttfamily\small, breaklines=true, frame=single}
+
+% Student data
+\newcommand{\studentname}{V\'ictor Salas G\'omez}
+\newcommand{\githuburl}{\url{https://github.com/SalasGomez/EODP}}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{EODP Unitary Test Reports}
+\rhead{\studentname}
+\cfoot{\thepage}
+
+\title{\textbf{EODP Unitary Test Reports}\\[0.5em]
+\large Earth Observation Data Processing\\Master in Space Engineering, UC3M}
+\author{\studentname}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+
+\input{sections/introduction}
+\input{sections/harness}
+\input{sections/ism}
+\input{sections/l1b}
+\input{sections/l1c}
+\input{sections/e2e}
+\input{sections/conclusions}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
