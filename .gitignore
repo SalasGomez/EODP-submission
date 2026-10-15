@@ -20,8 +20,8 @@ __pycache__/
 Thumbs.db
 Desktop.ini
 # Test data from the teacher (too large for GitHub)
-EODP-TS-E2E/
-EODP_TER_2021/
+/EODP-TS-E2E/
+/EODP_TER_2021/
 Theoretical Context and instructions/
 
 # Harness outputs (delivered in the datapack)
