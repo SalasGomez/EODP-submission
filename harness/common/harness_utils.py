@@ -98,7 +98,8 @@ def saveFig(fig, dirs, name):
     Saves a figure in the test figures folder (png) and in the report (pdf)
     '''
     fig.savefig(os.path.join(dirs['figures'], name + '.png'))
-    fig.savefig(os.path.join(REPORT, 'figures', name + '.pdf'))
+    # No creation date, so unchanged figures do not show up in git
+    fig.savefig(os.path.join(REPORT, 'figures', name + '.pdf'), metadata={'CreationDate': None})
     plt.close(fig)
 
 
