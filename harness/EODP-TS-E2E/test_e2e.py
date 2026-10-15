@@ -130,6 +130,22 @@ def radiometricCheck(dirs, logger):
         fid.write('\\bottomrule\n\\end{tabular}\n')
 
 
+def extraCheck(dirs, logger):
+    '''
+    Optional. Compares with the ISM and L1B outputs provided in EODP-TS-E2E,
+    when they are available. Not required for the E2E test.
+    '''
+    rows = []
+    for mod, prefixes in [('ism', ['ism_toa_isrf_', 'ism_toa_optical_', 'ism_toa_e_', 'ism_toa_detection_', 'ism_toa_']),
+                          ('l1b', ['l1b_toa_'])]:
+        refdir = os.path.join(E2E, mod + '_out')
+        if not os.path.isdir(refdir):
+            logger.info('No provided outputs in ' + refdir)
+            return
+        rows += crossValidate(refdir, os.path.join(dirs['output'], mod), prefixes, logger)
+    writeTables(rows, 'e2e_crossval', 'E2E. Comparison with the ISM and L1B outputs provided with the E2E data. Maximum relative difference [\\%] per band.')
+
+
 if __name__ == '__main__':
     dirs = testDirs(TEST, clean='--plots-only' not in sys.argv)
     logger = harnessLogger(dirs, TEST)
@@ -138,4 +154,5 @@ if __name__ == '__main__':
     plotAltitude(dirs, logger)
     plotL1bBands(dirs, logger)
     radiometricCheck(dirs, logger)
+    extraCheck(dirs, logger)
     logger.info('End of ' + TEST)
