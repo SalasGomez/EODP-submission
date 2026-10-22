@@ -1,0 +1,74 @@
+2026-10-25 20:01:17 - harness.EODP-TS-ISM - INFO     - Running the ISM. Input C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\EODP_TER_2021\EODP-TS-ISM\input\gradient_alt100_act150
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - ISM finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-ISM\output
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_isrf_          VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_isrf_          VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_isrf_          VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_isrf_          VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_optical_       VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_optical_       VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_optical_       VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_optical_       VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_e_             VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_e_             VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_e_             VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_e_             VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_prnu_          VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_prnu_          VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_prnu_          VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_prnu_          VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_ds_            VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_ds_            VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_ds_            VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_ds_            VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_detection_     VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_detection_     VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_detection_     VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_detection_     VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_               VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_               VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_               VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation ism_toa_               VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdiff_                 VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdiff_                 VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdiff_                 VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdiff_                 VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdefoc_                VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdefoc_                VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdefoc_                VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdefoc_                VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hwfe_                  VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hwfe_                  VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hwfe_                  VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hwfe_                  VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdet_                  VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdet_                  VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdet_                  VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hdet_                  VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsmear_                VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsmear_                VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsmear_                VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsmear_                VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hmotion_               VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hmotion_               VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hmotion_               VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hmotion_               VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsys_                  VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsys_                  VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsys_                  VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - Cross-validation Hsys_                  VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:30 - harness.EODP-TS-ISM - INFO     - ISM cross-validation PASSED
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - MTF figures saved
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-0 ACT: lowest contributor at Nyquist is WFE aberrations (0.5775). System 0.3577
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-0 ALT: lowest contributor at Nyquist is WFE aberrations (0.5795). System 0.3563
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-1 ACT: lowest contributor at Nyquist is Detector (0.6451). System 0.4083
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-1 ALT: lowest contributor at Nyquist is Detector (0.6493). System 0.4063
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-2 ACT: lowest contributor at Nyquist is Detector (0.6451). System 0.4407
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-2 ALT: lowest contributor at Nyquist is Detector (0.6493). System 0.4383
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-3 ACT: lowest contributor at Nyquist is Detector (0.6451). System 0.4491
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-3 ALT: lowest contributor at Nyquist is Detector (0.6493). System 0.4466
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-0 pixel [50,75] L=69.8533 e: analytic 52676.14 saved 52673.41 (from optical 52673.41). DN: analytic 758 saved 804 (from detection 804)
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-1 pixel [50,75] L=200.3996 e: analytic 205092.36 saved 205082.75 (from optical 205082.75). DN: analytic 2953 saved 2985 (from detection 2985)
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-2 pixel [50,75] L=347.5041 e: analytic 462601.44 saved 420000.00 (from optical 462581.17). DN: analytic 6661 saved 4095 (from detection 4095)
+2026-10-25 20:01:35 - harness.EODP-TS-ISM - INFO     - VNIR-3 pixel [50,75] L=408.5177 e: analytic 594119.27 saved 420000.00 (from optical 594093.67). DN: analytic 8555 saved 4095 (from detection 4095)
+2026-10-25 20:01:36 - harness.EODP-TS-ISM - INFO     - Stage figure saved
+2026-10-25 20:01:36 - harness.EODP-TS-ISM - INFO     - End of EODP-TS-ISM
