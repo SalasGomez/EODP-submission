@@ -1,0 +1,18 @@
+2026-10-25 20:05:10 - harness.EODP-TS-L1B - INFO     - Running the L1B with do_equalization=False
+2026-10-25 20:05:12 - harness.EODP-TS-L1B - INFO     - L1B finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-L1B\output\noeq
+2026-10-25 20:05:12 - harness.EODP-TS-L1B - INFO     - Running the L1B with do_equalization=True
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - L1B finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-L1B\output\eq
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_eq_            VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_eq_            VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_eq_            VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_eq_            VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_               VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_               VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_               VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - Cross-validation l1b_toa_               VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - L1B cross-validation PASSED
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - VNIR-0 median rel error vs truth: no eq 7.494 %, eq 0.233 %. Saturated pixels 0.0 %
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - VNIR-1 median rel error vs truth: no eq 4.116 %, eq 0.166 %. Saturated pixels 30.7 %
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - VNIR-2 median rel error vs truth: no eq 4.216 %, eq 0.946 %. Saturated pixels 68.7 %
+2026-10-25 20:05:13 - harness.EODP-TS-L1B - INFO     - VNIR-3 median rel error vs truth: no eq 5.047 %, eq 1.655 %. Saturated pixels 76.7 %
+2026-10-25 20:05:15 - harness.EODP-TS-L1B - INFO     - End of EODP-TS-L1B
