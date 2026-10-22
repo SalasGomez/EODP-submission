@@ -221,7 +221,7 @@ class mtf:
 
         labels = ['Diffraction', 'Defocus', 'WFE aberrations', 'Detector', 'Smearing', 'Motion blur', 'System']
         mtfs = [Hdiff, Hdefoc, Hwfe, Hdet, Hsmear, Hmotion, Hsys]
-        styles = ['-b', '--g', '-c', '-m', '-.', ':k', '-r']
+        styles = [('b', '-'), ('g', '--'), ('c', '-'), ('m', '-'), ('orange', '-.'), ('k', ':'), ('r', '-')]
 
         # Cuts from 0 to Nyquist (0.5)
         cuts = {'Act': (fnAct[iact:], [H[ialt, iact:] for H in mtfs]),
@@ -229,8 +229,8 @@ class mtf:
 
         for cut, (fn, Hs) in cuts.items():
             fig = plt.figure(figsize=(10, 7))
-            for H, lab, sty in zip(Hs, labels, styles):
-                plt.plot(fn, H, sty, linewidth=2 if lab == 'System' else 1, label=lab)
+            for H, lab, (col, ls) in zip(Hs, labels, styles):
+                plt.plot(fn, H, color=col, linestyle=ls, linewidth=2 if lab == 'System' else 1, label=lab)
             plt.axvline(0.5, color='k', linestyle='--', label='Nyquist')
             plt.xlim(0, 0.52)
             plt.ylim(0, 1.05)
