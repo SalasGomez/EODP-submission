@@ -59,15 +59,15 @@ def calibrationPlot(dirs, eqdir, noeqdir, logger):
         ax.set_ylabel(r'TOA [mW/m$^2$/sr]')
         ax.grid(True)
 
-        # Errors on the non saturated pixels, without the MTF edge columns
+        # Median errors on the non saturated pixels, without the MTF edge columns
         ok = dn < 4095
         ok[:, :2] = False
         ok[:, -2:] = False
-        err_noeq = np.mean(np.abs(noeq[ok] - truth[ok]) / truth[ok]) * 100
-        err_eq = np.mean(np.abs(eq[ok] - truth[ok]) / truth[ok]) * 100
+        err_noeq = np.median(np.abs(noeq[ok] - truth[ok]) / truth[ok]) * 100
+        err_eq = np.median(np.abs(eq[ok] - truth[ok]) / truth[ok]) * 100
         sat = np.mean(dn >= 4095) * 100
         rows.append((band, err_noeq, err_eq, sat))
-        logger.info('%s mean rel error vs truth: no eq %.3f %%, eq %.3f %%. Saturated pixels %.1f %%' %
+        logger.info('%s median rel error vs truth: no eq %.3f %%, eq %.3f %%. Saturated pixels %.1f %%' %
                     (band, err_noeq, err_eq, sat))
     axs[0, 0].legend(loc='upper left', fontsize=11)
     saveFig(fig, dirs, 'l1b_calibration')
