@@ -38,6 +38,12 @@ python harness/EODP-TS-E2E/test_e2e.py
 python harness/common/environment.py
 ```
 
+Or all of them in order:
+
+```bash
+python harness/run_all.py
+```
+
 Each script writes its outputs, logs and figures in its harness folder, and the tables and figures of the report in `report/`.
 The E2E uses the configuration in `EODP-TS-E2E/config` through the `EODP_CONFIG_DIR` variable.
 
