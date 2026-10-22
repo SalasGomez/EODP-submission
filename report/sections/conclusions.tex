@@ -1,0 +1,35 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+Table~\ref{tab:summary} summarises the results.
+
+\begin{table}[H]
+\centering
+\caption{Summary of the tests.}
+\label{tab:summary}
+\begin{tabular}{llc}
+\toprule
+Test & Evidence & Result \\
+\midrule
+EODP-TS-ISM & 28 TOA files and 28 MTF files equal to the reference & Pass \\
+EODP-TS-L1B & 8 files equal to the reference & Pass \\
+EODP-TS-L1C & 4 files equal to the reference after matching the points & Pass \\
+EODP-TS-E2E & Chain without errors. Mean radiance recovered within 0.02~\% & Pass \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The main findings are the following.
+\begin{itemize}
+\item All the outputs of the unitary tests match the reference with a relative difference below $10^{-3}\,\%$. Most of them are identical.
+\item The detector MTF defines the system MTF in VNIR-1, VNIR-2 and VNIR-3. The wavefront error aberrations define it in VNIR-0. The system MTF at Nyquist is between 0.36 and 0.45.
+\item The two largest unit conversion factors are the irradiance to photons and the volts to DN conversions. The MTF, the detection effects and the saturation explain why the analytic conversion differs from the saved outputs.
+\item In the unitary test scene VNIR-1, VNIR-2 and VNIR-3 saturate. The L1B cannot recover the radiance above the saturation level.
+\item The equalization removes the PRNU and DSNU stripes. The L1B then follows the input radiance.
+\item The L1B GSD is about 45~m. The L1C grid of 100~m has fewer points than the L1B. Near the borders the L1C spline extrapolates.
+\item The end-to-end chain works on a real scene. The L1B recovers the input radiance.
+\end{itemize}
+
+Two improvements are suggested.
+A margin around the image would remove the MTF edge effect of the ISM.
+A check of the L1B footprint in the L1C would avoid the extrapolated values on the borders.
