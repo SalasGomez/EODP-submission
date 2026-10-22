@@ -47,13 +47,14 @@ In VNIR-1, VNIR-2 and VNIR-3 the L1B becomes flat from a certain column. The L1B
 This happens because the ISM saturated these pixels at the FWC and at 4095~DN (Section~\ref{sec:ism}). The information above saturation is lost and the L1B cannot recover it.
 The flat level is the radiance that corresponds to 4095~DN after the equalization and the gain.
 
-Table~\ref{tab:l1b_errors} gives the mean relative error with respect to the truth.
+Table~\ref{tab:l1b_errors} gives the median relative error with respect to the truth.
 Saturated pixels and the two columns of each border are excluded.
-The equalization reduces the error in all the bands. The remaining error comes from the MTF and from the quantisation.
+The median is used because the first columns have a radiance close to zero, where any small difference gives a large relative error.
+The equalization reduces the error in all the bands.
 
 \begin{table}[H]
 \centering
-\caption{L1B mean relative error with respect to the TOA after the ISRF, and fraction of saturated pixels.}
+\caption{L1B median relative error with respect to the TOA after the ISRF, and fraction of saturated pixels.}
 \label{tab:l1b_errors}
 \input{tables/l1b_errors}
 \end{table}
