@@ -33,7 +33,7 @@ class opticalPhase(initIsm):
         self.logger.info("EODP-ALG-ISM-1010: Spectral modelling. ISRF")
         toa = self.spectralIntegration(sgm_toa, sgm_wv, band)
 
-        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [mW/m2/sr]")
 
         if self.ismConfig.save_after_isrf:
             saveas_str = self.globalConfig.ism_toa_isrf + band
@@ -47,7 +47,7 @@ class opticalPhase(initIsm):
                              self.ismConfig.f,
                              self.ismConfig.Tr)
 
-        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [mW/m2]")
 
         # Spatial filter
         # -------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ class opticalPhase(initIsm):
 
         # Apply system MTF
         toa = self.applySysMtf(toa, Hsys) # always calculated
-        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [e-]")
+        self.logger.debug("TOA [0,0] " +str(toa[0,0]) + " [mW/m2]")
 
 
 
