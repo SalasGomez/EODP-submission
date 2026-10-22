@@ -49,7 +49,17 @@ The E2E uses the configuration in `EODP-TS-E2E/config` through the `EODP_CONFIG_
 
 ## Report
 
+The compiled report is `report/main.pdf`. To rebuild it:
+
 ```bash
 cd report
 latexmk -pdf main.tex
+```
+
+## Datapack
+
+Builds `EODP_datapack.zip` with the report PDF and the four harness folders (script, log, output, figures):
+
+```bash
+python harness/make_datapack.py
 ```
