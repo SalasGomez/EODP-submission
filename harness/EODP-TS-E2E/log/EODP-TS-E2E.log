@@ -1,0 +1,45 @@
+2026-10-25 20:01:59 - harness.EODP-TS-E2E - INFO     - E2E config: pix_size 4.2e-05 m, t_int 0.0428 s, D 0.07565 m, f 0.2345 m, PRNU False, DS False, bad/dead False
+2026-10-25 20:01:59 - harness.EODP-TS-E2E - INFO     - L1B do_equalization False
+2026-10-25 20:01:59 - harness.EODP-TS-E2E - INFO     - Running the ISM. Input C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\EODP-TS-E2E\sgm_out
+2026-10-25 20:04:10 - harness.EODP-TS-E2E - INFO     - ISM finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-E2E\output\ism
+2026-10-25 20:04:10 - harness.EODP-TS-E2E - INFO     - ISM time 132 s
+2026-10-25 20:04:10 - harness.EODP-TS-E2E - INFO     - Running the L1B. Input C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-E2E\output\ism
+2026-10-25 20:04:12 - harness.EODP-TS-E2E - INFO     - L1B finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-E2E\output\l1b
+2026-10-25 20:04:12 - harness.EODP-TS-E2E - INFO     - L1B time 2 s
+2026-10-25 20:04:12 - harness.EODP-TS-E2E - INFO     - Running the L1C. Inputs C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\EODP-TS-E2E\gm_out and C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-E2E\output\l1b
+2026-10-25 20:04:50 - harness.EODP-TS-E2E - INFO     - L1C finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-E2E\output\l1c
+2026-10-25 20:04:50 - harness.EODP-TS-E2E - INFO     - L1C time 38 s
+2026-10-25 20:04:52 - harness.EODP-TS-E2E - INFO     - Altitude min 131.1 m, max 2972.4 m. Lat [41.550, 44.092], lon [0.573, 2.311]
+2026-10-25 20:04:53 - harness.EODP-TS-E2E - INFO     - VNIR-0 L1B TOA min 2.870, max 13.655, mean 12.253 mW/m2/sr
+2026-10-25 20:04:54 - harness.EODP-TS-E2E - INFO     - VNIR-1 L1B TOA min 2.620, max 13.763, mean 12.233 mW/m2/sr
+2026-10-25 20:04:56 - harness.EODP-TS-E2E - INFO     - VNIR-2 L1B TOA min 1.257, max 7.064, mean 6.252 mW/m2/sr
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - VNIR-3 L1B TOA min 1.491, max 8.531, mean 7.545 mW/m2/sr
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - VNIR-0 mean ISRF TOA 12.2554, mean L1B TOA 12.2529, diff -0.021 %, saturated 0.00 %
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - VNIR-1 mean ISRF TOA 12.2348, mean L1B TOA 12.2326, diff -0.018 %, saturated 0.00 %
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - VNIR-2 mean ISRF TOA 6.2529, mean L1B TOA 6.2520, diff -0.016 %, saturated 0.00 %
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - VNIR-3 mean ISRF TOA 7.5464, mean L1B TOA 7.5453, diff -0.015 %, saturated 0.00 %
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_isrf_          VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_isrf_          VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_isrf_          VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_isrf_          VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:57 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_optical_       VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_optical_       VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_optical_       VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_optical_       VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_e_             VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_e_             VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_e_             VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_e_             VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_detection_     VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_detection_     VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_detection_     VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_detection_     VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_               VNIR-0 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_               VNIR-1 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_               VNIR-2 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation ism_toa_               VNIR-3 max rel diff 0.000e+00 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation l1b_toa_               VNIR-0 max rel diff 1.179e-05 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation l1b_toa_               VNIR-1 max rel diff 1.186e-05 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation l1b_toa_               VNIR-2 max rel diff 1.186e-05 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - Cross-validation l1b_toa_               VNIR-3 max rel diff 1.188e-05 % PASS
+2026-10-25 20:04:58 - harness.EODP-TS-E2E - INFO     - End of EODP-TS-E2E
