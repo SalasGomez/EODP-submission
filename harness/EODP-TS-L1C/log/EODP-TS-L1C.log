@@ -1,0 +1,15 @@
+2026-10-25 20:01:43 - harness.EODP-TS-L1C - INFO     - Running the L1C. Inputs C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\EODP_TER_2021\EODP-TS-L1C\input\gm_alt100_act_150 and C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\EODP_TER_2021\EODP-TS-L1C\input\l1b_output
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - L1C finished. Outputs in C:\Users\Usuario\Desktop\UC3M MASTERS\EODP\harness\EODP-TS-L1C\output
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - VNIR-0 points ref 3129 mine 3129, max coord. distance 0.000e+00 m, max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - VNIR-1 points ref 3129 mine 3129, max coord. distance 0.000e+00 m, max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - VNIR-2 points ref 3129 mine 3129, max coord. distance 0.000e+00 m, max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - VNIR-3 points ref 3129 mine 3129, max coord. distance 0.000e+00 m, max rel diff 0.000e+00 % PASS
+2026-10-25 20:01:48 - harness.EODP-TS-L1C - INFO     - L1C cross-validation PASSED
+2026-10-25 20:01:49 - harness.EODP-TS-L1C - INFO     - L1B points 15000, L1C points 3129
+2026-10-25 20:01:51 - harness.EODP-TS-L1C - INFO     - VNIR-0 L1C points with negative radiance: 0
+2026-10-25 20:01:53 - harness.EODP-TS-L1C - INFO     - VNIR-1 L1C points with negative radiance: 0
+2026-10-25 20:01:55 - harness.EODP-TS-L1C - INFO     - VNIR-2 L1C points with negative radiance: 2
+2026-10-25 20:01:56 - harness.EODP-TS-L1C - INFO     - VNIR-3 L1C points with negative radiance: 0
+2026-10-25 20:01:57 - harness.EODP-TS-L1C - INFO     - GSD ACT mean 45.157 m, min 45.157 m, max 45.157 m
+2026-10-25 20:01:57 - harness.EODP-TS-L1C - INFO     - GSD ALT mean 45.285 m, min 45.285 m, max 45.286 m
+2026-10-25 20:01:57 - harness.EODP-TS-L1C - INFO     - End of EODP-TS-L1C
