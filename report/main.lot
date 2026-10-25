@@ -1,0 +1,17 @@
+\contentsline {table}{\numberline {1}{\ignorespaces List of tests.}}{4}{table.caption.4}%
+\contentsline {table}{\numberline {2}{\ignorespaces Test environment.}}{5}{table.caption.5}%
+\contentsline {table}{\numberline {3}{\ignorespaces Algorithms of the ATBD and their implementation.}}{6}{table.caption.6}%
+\contentsline {table}{\numberline {4}{\ignorespaces Main ISM configuration parameters.}}{7}{table.caption.7}%
+\contentsline {table}{\numberline {5}{\ignorespaces ISM cross-validation of the TOA outputs. Maximum relative difference [\%] per band.}}{7}{table.5}%
+\contentsline {table}{\numberline {6}{\ignorespaces ISM cross-validation of the MTFs. Maximum relative difference [\%] per band.}}{8}{table.6}%
+\contentsline {table}{\numberline {7}{\ignorespaces MTF of each contributor at the last sample before Nyquist.}}{11}{table.caption.13}%
+\contentsline {table}{\numberline {8}{\ignorespaces Unit conversion factors per band. The two largest factors of each band are in bold.}}{12}{table.caption.14}%
+\contentsline {table}{\numberline {9}{\ignorespaces Analytic conversion at the central pixel compared with the saved outputs.}}{12}{table.caption.15}%
+\contentsline {table}{\numberline {10}{\ignorespaces L1B cross-validation with equalization. Maximum relative difference [\%] per band.}}{13}{table.10}%
+\contentsline {table}{\numberline {11}{\ignorespaces L1B median relative error with respect to the TOA after the ISRF, and fraction of saturated pixels.}}{14}{table.caption.17}%
+\contentsline {table}{\numberline {12}{\ignorespaces L1C cross-validation after matching the points by coordinates.}}{16}{table.caption.18}%
+\contentsline {table}{\numberline {13}{\ignorespaces L1B ground sampling distance.}}{17}{table.caption.20}%
+\contentsline {table}{\numberline {14}{\ignorespaces E2E configuration. Parameters that differ from the unitary tests.}}{21}{table.caption.26}%
+\contentsline {table}{\numberline {15}{\ignorespaces E2E. Mean radiance before the instrument and after the L1B [mW/m$^2$/sr].}}{25}{table.caption.32}%
+\contentsline {table}{\numberline {16}{\ignorespaces E2E. Comparison with the ISM and L1B outputs provided with the E2E data. Maximum relative difference [\%] per band.}}{25}{table.16}%
+\contentsline {table}{\numberline {17}{\ignorespaces Summary of the tests.}}{25}{table.caption.33}%

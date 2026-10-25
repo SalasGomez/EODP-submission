@@ -14,7 +14,7 @@ Each folder contains the four items required by the guide \cite{guide}.
 
 The folder \texttt{harness/common/} has the shared functions.
 They handle the paths, the logs, the figures and the cross-validation.
-The cross-validation tables of this report are written by the scripts. They are not typed by hand.
+The cross-validation tables of this report are written by the scripts.
 
 \begin{lstlisting}
 harness/
@@ -45,11 +45,10 @@ Some changes were needed to run it in the test environment.
 
 \begin{itemize}
 \item The main scripts use paths relative to the repository.
-\item The log file path uses forward slashes. The logging configuration evaluates the path as a string and the Windows backslashes broke it.
 \item The configuration files are loaded with a small loader. If the variable \texttt{EODP\_CONFIG\_DIR} is set, the configuration is read from that folder. The E2E test uses it to load the E2E configuration.
 \item The unused \texttt{interp2d} imports were removed. The function no longer exists in recent SciPy versions.
 \item The \texttt{mgrs} library is fixed to version 1.5.0. Later versions return the centre of the MGRS tile instead of its south-west corner. The reference outputs use the corner.
-\item All the figures use the \texttt{classic} Matplotlib style and \LaTeX{} fonts.
+
 \end{itemize}
 
 \subsection{Traceability to the ATBD}

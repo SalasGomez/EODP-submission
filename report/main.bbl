@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{mgrs}
+{Howard Butler and contributors}.
+\newblock mgrs. {P}ython library for {MGRS} conversions.
+\newblock \url{https://pypi.org/project/mgrs/}.
+\newblock Version 1.5.0.
+
+\bibitem{repo}
+V\'ictor Salas~G\'omez.
+\newblock {EODP} source code repository.
+\newblock \url{https://github.com/SalasGomez/EODP}, 2026.
+
+\bibitem{atbd}
+Luc\'ia Soto.
+\newblock {EODP} algorithm theoretical baseline document.
+\newblock Technical report, Universidad Carlos III de Madrid, 2022.
+\newblock Revision 1.4, 22/08/2022.
+
+\bibitem{guide}
+Luc\'ia Soto.
+\newblock Guide to the subject. earth observation data processing, 2026.
+\newblock Revision 3.0, 10/09/2026. Master in Space Engineering, UC3M.
+
+\end{thebibliography}
